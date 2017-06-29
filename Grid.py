@@ -9,18 +9,22 @@ import sys
 #os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
 
 pygame.init()
-#pygame.mouse.set_visible(False)
-pygame.mouse.set_visible(True)
+
+#pygame.event.set_grab(True)
+pygame.mouse.set_visible(False)
+#pygame.mouse.set_visible(True)
 
 #Screen size in pixels
 size=[300,300]
 
 position = size
 
+DPI=300
+
 #Mouse Displacement (x,y)
 disp = [0,0]
-scale = 0.5
-
+scale = [size[0]/3/12/DPI,size[1]/3/12/DPI]
+#scale=[1,1]
 BLACK = 0, 0, 0
 WHITE = 255, 255, 255
 RED = 255, 0, 0
@@ -111,13 +115,13 @@ while True:
         disp = pygame.mouse.get_rel()
 	    
         if (disp[0] != 0 or disp[1] != 0):
-            print('potato!')
-            position[0] += int(disp[0]*scale)
-            position[1] += int(disp[1]*scale)
+            position[0] += disp[0]*scale[0]
+            position[1] += disp[1]*scale[1]
             drawGrid()
             print(position)
+            print(disp)
 
-            pygame.draw.circle(screen, RED, position, 5, 0)
+            pygame.draw.circle(screen, RED, [int(position[0]),int(position[1])], 5, 0)
 
             pygame.display.update()
 
