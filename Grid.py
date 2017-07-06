@@ -10,16 +10,16 @@ import sys
 
 pygame.init()
 
-#pygame.event.set_grab(True)
+pygame.event.set_grab(True)
 pygame.mouse.set_visible(False)
 #pygame.mouse.set_visible(True)
 
 #Screen size in pixels
-size=[300,300]
+size=[900,900]
 
 position = size
 
-DPI=300
+DPI=1000
 
 #Mouse Displacement (x,y)
 disp = [0,0]
@@ -126,7 +126,7 @@ while True:
             pygame.display.update()
 
         x=position[0]
-	y=position[1]
+        y=position[1]
         print ("At " + str(x) + ", " + str(y))
         if y < int(size[1]/3) and y > 0: 
             if x < int(size[0]/3) and x > 0:
