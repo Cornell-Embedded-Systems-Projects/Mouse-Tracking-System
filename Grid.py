@@ -125,8 +125,8 @@ while True:
 
             pygame.display.update()
 
-        pos = pygame.mouse.get_pos()
-        x,y = pos
+        x=position[0]
+	y=position[1]
         print ("At " + str(x) + ", " + str(y))
         if y < int(size[1]/3) and y > 0: 
             if x < int(size[0]/3) and x > 0:
