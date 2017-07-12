@@ -11,14 +11,14 @@ import sys
 
 pygame.init()
 
-pygame.event.set_grab(True)
 pygame.mouse.set_visible(False)
 #pygame.mouse.set_visible(True)
+pygame.event.set_grab(True)
 
 #Screen size in pixels
-size=[900,900]
+size=[300,300]
 
-position = size
+position = size[:]
 
 DPI=1000
 
@@ -30,7 +30,7 @@ BLACK = 0, 0, 0
 WHITE = 255, 255, 255
 RED = 255, 0, 0
 
-screen = pygame.display.set_mode((size[0], size[1])) #the size of the whole panel
+screen = pygame.display.set_mode(size) #the size of the whole panel
 my_font = pygame.font.Font(None, 50)
 my_buttons1 = { '1':(int(size[0]/6),int(size[1]/6))}
 my_buttons2 = { '2':(int(size[0]*3/6),int(size[1]/6))}
@@ -107,6 +107,9 @@ def drawGrid():
 while True:
     pygame.event.pump()
     for event in pygame.event.get():
+        if(event.type == pygame.KEYDOWN):
+            if (event.key == pygame.K_ESCAPE):
+                pygame.event.set_grab(False)
 
         if(event.type == pygame.QUIT):
             pygame.quit()
@@ -159,6 +162,3 @@ while True:
             else:
                 h9 = True
                 print ("grid 9 is pressed")
-
-
-            
